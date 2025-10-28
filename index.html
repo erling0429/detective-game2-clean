@@ -66,9 +66,9 @@
 
     <!--리포트-->
     <div class="report" id="report">
-      <h3>AI 분석 결과</h3>
+     <!--> <h3>AI 분석 결과</h3>
       <p>로그에서 감정 파형 이상 감지<br/>마지막 감정: 공포 → 정적</p>
-      <p><em>삭제 명령은 AI가 발신</em></p>
+      <p><em>삭제 명령은 AI가 발신</em></p>-->
     </div>
 
     <!--단서-->
@@ -82,7 +82,7 @@
         <img id="clue-image" class="clue-detail-img" src="" alt="단서 이미지" />
         <h4 id="clue-title">단서 제목</h4>
         <p id="clue-description">단서 설명</p>
-        <button onclick="closeClueDetail()">닫기</button>
+        <button id="clue-detail-close-btn">닫기</button>
       </div>
     </div>
 
@@ -96,7 +96,7 @@
         <div class="slot" data-slot="2">슬롯 2</div>
         <div class="slot" data-slot="3">슬롯 3</div>
       </div>
-      <button id="deduceBtn" onclick="deduce()">결론 도출</button>
+      <button id="deduceBtn">결론 도출</button>
     </div>
 
 
@@ -106,7 +106,7 @@
       <button id="chatBtn" onclick="switchTab('chat')">채팅</button>
       <button id="cluesBtn" onclick="switchTab('clues')">단서</button>
       <button id="boardBtn" onclick="switchTab('board')">추리보드</button>
-      <button id="reportBtn" onclick="switchTab('report')">리포트</button>
+     <!-- <button id="reportBtn" onclick="switchTab('report')">리포트</button>-->
       
     </div>
   </div>
@@ -127,8 +127,7 @@
     <div class="popup-content">
       
       <span class="popup-close">✖</span>
-      <span class="popup-close" onclick="closeFeedPopup()">✖</span>
-  
+      
       <div class="popup-image-container">
         <img id="popup-img" src="" alt="피드 이미지" />
       </div>
@@ -158,7 +157,7 @@
   <div class="ending-screen hidden" id="ending-screen">
     <h2 id="ending-title"></h2>
     <p id="ending-desc"></p>
-    <button onclick="restartGame()">다시 시작</button>
+    <button id="restart-btn">다시 시작</button>
   </div>
 </div>
 

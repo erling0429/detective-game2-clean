@@ -1,6 +1,4 @@
-
-/* 
-==============================
+/* ==============================
  feed 정보
 */
 let feedData = [];
@@ -15,8 +13,7 @@ fetch('data/feed.json')
   //==========================
 
 
-/* 
-==============================
+/* ==============================
  채팅 정보
 */
 
@@ -34,8 +31,7 @@ fetch('data/chat.json')
 
 //=============================
 
-/* 
-==============================
+/* ==============================
 🎬 인트로 시퀀스 제어
 */
 
@@ -59,13 +55,11 @@ let isTyping = false;      // 타이핑 중인지 여부
 const introTextElement = document.getElementById("intro-text");
 const introVideo = document.getElementById("intro-video");
 
-/* 
-==============================
+/* ==============================
 */
 
 
-/* 
-==============================
+/* ==============================
 🎬 오디오 제어
 */
 
@@ -106,14 +100,12 @@ const dialogues = [
 let currentDialogueSet = []; // 현재 대사 목록
 let currentDialogueIndex = 0;// 현재 대화 인덱스 저장용
 let dialogueEndCallback = null; // 대사 끝난 후 실행할 함수
-/* 
-==============================
+/* ==============================
 */
 
 
 
-/* 
-==============================
+/* ==============================
  단서 정보
 */
 const clues = [
@@ -122,13 +114,11 @@ const clues = [
   // 필요만큼 추가
 ];
 
-/* 
-==============================
+/* ==============================
 */
 
 
-/* 
-==============================
+/* ==============================
  엔딩 정보보
 */
 const endings = [
@@ -136,16 +126,14 @@ const endings = [
   { id: 'ending2', title: '어둠 속에 묻히다', description: '단서가 부족했고, 진실은 잊혀졌다...', condition: { cluesCollected: [], choicePath: [2] } },
   
 ];
-/* 
-==============================
+/* ==============================
 */
 
 
 
 
 
-/* 
-====================================================================================================================
+/* ====================================================================================================================
 ✅✅✅ 메인 함수 정의 구간간
 */
 
@@ -317,8 +305,7 @@ function playClickSound() {
   audio.play();
 }
 
-/* 
-==============================
+/* ==============================
 📱 스마트폰 내부 UI 제어
 ==============================
 */
@@ -620,8 +607,7 @@ function openChatRoom(id) {
   }
 }
 
-/** 
- * 피드 관련 함수
+/** * 피드 관련 함수
 */
 
 function openFeedPopupById(id) { 
@@ -782,6 +768,105 @@ function switchToClues() {
 }
 
 
+/**
+* * 추리 보드 관련 함수
+*/
+let selectedEvidence = []; // 추리보드에서 선택된 단서들
+const MAX_SLOTS = 3;
+
+/**
+ * 추리보드 초기화
+ */
+function initBoard() {
+  const evidenceList = document.getElementById('evidence-list');
+  evidenceList.innerHTML = '';
+  
+  // 수집된(collected) 단서만 추리보드에 표시
+  const collectedClues = clues.filter(clue => clue.collected);
+  
+  collectedClues.forEach(clue => {
+    const ev = document.createElement('div');
+    ev.className = 'evidence';
+    ev.textContent = clue.title;
+    ev.dataset.clueId = clue.id;
+    ev.onclick = () => selectEvidence(ev, clue.id);
+    evidenceList.appendChild(ev);
+  });
+  
+  clearSlots();
+}
+
+/**
+ * 단서 선택/해제 토글
+ */
+function selectEvidence(element, clueId) {
+  const slotIndex = selectedEvidence.indexOf(clueId);
+
+  if (slotIndex > -1) {
+    // 이미 선택됨 -> 선택 해제
+    selectedEvidence.splice(slotIndex, 1);
+    element.classList.remove('selected');
+    updateSlots();
+  } else {
+    // 새로 선택
+    if (selectedEvidence.length < MAX_SLOTS) {
+      selectedEvidence.push(clueId);
+      element.classList.add('selected');
+      updateSlots();
+    } else {
+      alert('슬롯이 가득 찼습니다.');
+    }
+  }
+}
+
+/**
+ * 슬롯 UI 업데이트
+ */
+function updateSlots() {
+  const slots = document.querySelectorAll('.slots .slot');
+  slots.forEach((slot, index) => {
+    if (selectedEvidence[index]) {
+      const clue = clues.find(c => c.id === selectedEvidence[index]);
+      slot.textContent = clue.title;
+      slot.classList.add('filled');
+    } else {
+      slot.textContent = `슬롯 ${index + 1}`;
+      slot.classList.remove('filled');
+    }
+  });
+}
+
+/**
+ * 슬롯 비우기
+ */
+function clearSlots() {
+  selectedEvidence = [];
+  document.querySelectorAll('.evidence').forEach(el => el.classList.remove('selected'));
+  updateSlots();
+}
+
+/**
+ * 결론 도출 (엔딩 체크)
+ */
+function deduce() {
+  // TODO: selectedEvidence 배열을 기반으로 엔딩 조건 확인
+  console.log("선택된 단서:", selectedEvidence);
+
+  // 예시: 3개가 꽉 찼는지 확인
+  if (selectedEvidence.length !== MAX_SLOTS) {
+    alert('단서 3개를 모두 선택해주세요.');
+    return;
+  }
+  
+  // 엔딩 조건 확인 (예시)
+  const sortedSelection = [...selectedEvidence].sort().join(',');
+  
+  if (sortedSelection === 'footprint,photo,some_other_clue') {
+    showEnding('ending1');
+  } else {
+    showEnding('ending2');
+  }
+}
 
 
 
@@ -895,11 +980,36 @@ function loadDialogueSet(key, callback, isOneTime = true) {
     });
 }
 
+/**
+*
+*엔딩 
+*/
+/**
+ * 엔딩 화면 표시
+ * @param {string} endingId - endings 배열에 정의된 엔딩 id
+ */
+function showEnding(endingId) {
+  const ending = endings.find(e => e.id === endingId);
+  if (!ending) return;
+
+  const screen = document.getElementById('ending-screen');
+  document.getElementById('ending-title').textContent = ending.title;
+  document.getElementById('ending-desc').textContent = ending.description;
+  
+  screen.classList.remove('hidden');
+}
+
+/**
+ * 게임 재시작
+ */
+function restartGame() {
+  // 간단하게 페이지 새로고침
+  window.location.reload();
+}
 
 
 
-/* 
-==============================
+/* ==============================
 🚀 초기 실행
 ==============================
 */
@@ -914,3 +1024,25 @@ document.getElementById('next-btn').addEventListener('click', nextDialogue);
 
 // 👇 [추가] 피드 팝업 닫기 버튼에 이벤트 리스너 추가
 document.querySelector('.popup-close').addEventListener('click', closeFeedPopup);
+
+/* --- 👇 [수정] index.html에서 제거한 onclick 함수들 여기서 연결 --- */
+
+// 1. 단서 상세 닫기 버튼 (index.html에서 id="clue-detail-close-btn" 추가함)
+document.getElementById('clue-detail-close-btn').addEventListener('click', closeClueDetail);
+
+// 2. 추리보드 결론 도출 버튼
+document.getElementById('deduceBtn').addEventListener('click', deduce);
+
+// 3. 하단 탭 버튼들
+document.getElementById('feedBtn').addEventListener('click', () => switchTab('feed'));
+document.getElementById('chatBtn').addEventListener('click', () => switchTab('chat'));
+document.getElementById('cluesBtn').addEventListener('click', () => switchTab('clues'));
+document.getElementById('boardBtn').addEventListener('click', () => {
+  switchTab('board');
+  initBoard(); // 👈 추리보드 탭을 누를 때마다 단서 목록을 새로고침
+});
+document.getElementById('reportBtn').addEventListener('click', () => switchTab('report'));
+
+// 4. 엔딩 화면 다시 시작 버튼 (index.html에서 id="restart-btn" 추가함)
+document.getElementById('restart-btn').addEventListener('click', restartGame);
+
