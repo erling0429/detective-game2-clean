@@ -906,3 +906,5 @@ function loadDialogueSet(key, callback, isOneTime = true) {
 
 // 페이지가 로드되면 자동으로 인트로 텍스트 출력 시작
 window.onload = showIntroText;
+// 👇 [추가] 스킵 버튼 ID를 찾아 클릭 이벤트를 skipIntro 함수와 연결
+document.getElementById('skip-button').addEventListener('click', skipIntro);
