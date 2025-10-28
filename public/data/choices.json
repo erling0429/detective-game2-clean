@@ -1,0 +1,16 @@
+[
+  {
+    "id": "c1",
+    "dialogue_id": "d5",
+    "options": [
+      {
+        "text": "그녀를 정말 사랑했나요?",
+        "effect": {"emotion": {"sad": +0.3}, "relation": {"루카": +0.2}}
+      },
+      {
+        "text": "당신이 지웠죠?",
+        "effect": {"emotion": {"anger": +0.5}, "relation": {"루카": -0.3}}
+      }
+    ]
+  }
+]

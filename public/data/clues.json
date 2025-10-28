@@ -1,0 +1,20 @@
+[
+  {
+    "id": "footprint",
+    "title": "수상한 발자국",
+    "description": "밤에 젖은 발자국이 교정 끝자락까지 이어진다. 마치 누군가 도망친 듯한 흔적이다.",
+    "collected": false
+  },
+  {
+    "id": "photo",
+    "title": "흐릿한 사진",
+    "description": "벤치에 앉은 인물 둘 중 하나는 흐릿하게 흔들렸고, 나머지는 아예 흔적이 없다.",
+    "collected": false
+  },
+  {
+    "id": "ai_log",
+    "title": "AI 로그 파편",
+    "description": "AI의 감정 분석 로그 일부. 특정 구간에서 감정값이 폭주한 흔적이 남아 있다.",
+    "collected": false
+  }
+]

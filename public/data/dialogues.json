@@ -1,0 +1,12 @@
+{
+  "intro": [
+    { "speaker": "루시아", "side": "left", "text": "자아~ 오늘도 학교는 평화로웠고... 오늘의 사건 체크 타임!", "image": "assets/char/dialogues_intro1.png" },
+    { "speaker": "루시아", "side": "left", "text": " 컨텍트 코어 앱 실행... 로딩... 로딩.. 빨리 빨리! ", "image": "assets/char/dialogues_intro1.png" },
+    { "speaker": "루시아", "side": "left", "text": " 오늘은 어떤 괴상한 사건들이 올라왔으려나? ", "image": "assets/char/dialogues_intro1.png" }
+  ],
+  "case1": [
+    { "speaker": "루시아", "side": "left", "text": "어? 잠깐 잠깐.. 이건 뭐야? 흥미로운데? ", "image": "assets/char/dialogues_intro1.png" },
+    { "speaker": "루시아", "side": "left", "text": "바로 이거야! 이 사건 냄새 맡았다고! DM 보내 봐야지...! ", "image": "assets/char/dialogues_intro1.png"}
+  ]
+
+}

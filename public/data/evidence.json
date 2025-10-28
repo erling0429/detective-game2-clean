@@ -1,0 +1,26 @@
+[
+  {
+    "id": "e1",
+    "case_id": "EP01",
+    "type": "image",
+    "desc": "00:14 교정 벤치 사진 - 그림자 두 개 포착",
+    "tag": ["photo", "timestamp"],
+    "relevance": 0.8
+  },
+  {
+    "id": "e2",
+    "case_id": "EP01",
+    "type": "log",
+    "desc": "하연의 메시지 감정 로그 - 분노→공포→0 (정적)",
+    "tag": ["emotion_log", "anomaly"],
+    "relevance": 1.0
+  },
+  {
+    "id": "e3",
+    "case_id": "EP01",
+    "type": "post",
+    "desc": "하이퍼스트림 계정 자동 포스팅 - AI 감정 백업 알고리즘",
+    "tag": ["ai", "social"],
+    "relevance": 0.9
+  }
+]

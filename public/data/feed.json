@@ -1,0 +1,151 @@
+[
+  {
+    "id": "post1",
+    "unread": true,
+    "title":  "[사건 제보] 야자 시간에 친구가 사라진 썰 푼다 ",
+   
+    "content": "어제 밤 10시 30분쯤이었음\n야자 끝나고 화장실 간다고 나간 친구가\n30분이 지나도 안 돌아옴\n전화해도 안 받고 문자도 읽씹\nCCTV 확인했는데 화장실이 아니라 1층으로 나가는거;;\n근데 이상한 게\n마지막으로 친구가 목격된 곳에\n낡은 나무 벤치가 있었음\n원래 거기 벤치 없었는데..\nCCTV에만 찍혀있음\n친구가 그 벤치 앞에서 멈춰서더니\n누군가 앉아있는 것처럼 허공을 보다가\n그냥 사라짐",
+
+    "image": "assets/feed/post1.png",
+    "likes": 34,
+    "comments": [
+      { "user": "김솔음러버", "text": "헐 그거 10년 전 우리 학교에서도 똑같은 일 있었음", "floor": "1F" },
+      { "user": "재관국국", "text": "그 학교 혹시 ㅇㅇ고? 거기 옛날에 공동 묘지 있었다는 이야기 있음", "floor": "2F" },
+      { "user": "작성자", "text": "맞음;; 어케 알았음????", "floor": "2F" }
+    ],
+     "dialogueKey": "case1",
+     "once": true
+
+  },
+
+  {
+      "id": "post3",
+      "title": "[긴급] 3호선 막차에서 본 것",
+      "content": "어제 새벽 1시 47분 막차 탔는데 유리창에 비친 제 뒤에 계속 누가 서있는 게 보였어요. 고개 돌리면 아무도 없고 유리창에만 보임... 다음 역에서 내렸는데 그것도 따라 내렸어요.",
+      "image": "assets/feed/post3.png",
+      "likes": 15234,
+      "comments": [
+        { "user": "subway_ghost", "text": "ㅁㅊ 나도 3호선에서 비슷한 거 봄 ㄹㅇ", "floor": "1F" },
+        { "user": "occult_researcher", "text": "3호선 13량 편성 아니었음? 14량 타면 그거임", "floor": "2F" },
+        { "user": "rational_mind", "text": "그냥 피곤해서 본 거 아닐까요...", "floor": "3F" },
+        { "user": "midnight_walker", "text": "세어보니까 14량이었어요 미쳤다", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post4",
+      "title": "[후방주의] 편의점 야간알바 절대 하지 마세요",
+      "content": "3일 연속 새벽 3시 33분에 똑같은 손님이 와요. 남색 후드에 마스크 쓴 사람. 계산대 앞에 서면 바코드 스캔이 안 됨. 그 사람 나가고 CCTV 확인하면 아무도 안 찍혀있음.",
+      "image": "assets/feed/post4.png",
+      "likes": 28901,
+      "comments": [
+        { "user": "parttime_hell", "text": "형... 그거 3일 연속 왔으면 이제 4일째부터 매일 온다", "floor": "1F" },
+        { "user": "ghost_hunter_kim", "text": "위치 알려주세요 제가 직접 가보겠습니다", "floor": "2F" },
+        { "user": "convenience_nightmare", "text": "강남구 ㅇㅇ동입니다 진짜 와주세요 ㅠㅠ", "floor": "3F" },
+        { "user": "exorcist_lee", "text": "바코드 안 찍히는 건 미등록 존재임. 위험", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post5",
+      "title": "층수 세어보신 적 있으세요?",
+      "content": "제가 다니는 회사 건물 밖에서 보면 12층인데 안에서 엘베 타면 13층까지 있어요. 오늘 13층에 멈췄고 문 열렸을 때 복도에 사람들이 가득한데 전부 등만 보이고 돌아보지를 않음...",
+      "image": "assets/feed/post5.png",
+      "likes": 42156,
+      "comments": [
+        { "user": "architect_notes", "text": "건축법상 13층 건물 없습니다. 12층 다음 14층", "floor": "1F" },
+        { "user": "urban_legend_db", "text": "ㅇㅇ빌딩? 거기 20년 전 화재 사고 있었음", "floor": "2F" },
+        { "user": "building_13th_floor", "text": "맞아요... 어떻게 알았죠?", "floor": "3F" },
+        { "user": "shaman_park", "text": "절대 13층 다시 가지 마세요. 나오는 길 못 찾음", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post6",
+      "title": "거울 보다가 이상한 거 발견했어요",
+      "content": "욕실 거울 닦는데 제 뒤에 있는 문이 거울에는 열려있었어요. 근데 실제로는 닫혀있고 거울 속 문으로 누가 들어오는 게 보임. 지금도 거울 못 보고 있어요.",
+      "image": "assets/feed/post6.png",
+      "likes": 19483,
+      "comments": [
+        { "user": "mirror_collector", "text": "거울 깨세요. 지금 당장.", "floor": "1F" },
+        { "user": "paranormal_expert", "text": "거울상 불일치는 차원 겹침 현상. 위험도 S급", "floor": "2F" },
+        { "user": "mirror_world", "text": "거울 깨려는데 제 손이 안 움직여요", "floor": "3F" },
+        { "user": "emergency_hotline", "text": "주소 알려주세요. 특수팀 보냅니다", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post7",
+      "title": "[공포] 우리 집에서 들리는 소리",
+      "content": "매일 새벽 4시 44분에 위층에서 구슬 굴러가는 소리 들림. 근데 저희 집이 최고층이에요. 오늘은 구슬 소리가 제 방 천장에서 왼쪽에서 오른쪽으로 천천히...",
+      "image": "assets/feed/post7.png",
+      "likes": 35672,
+      "comments": [
+        { "user": "apartment_ghost", "text": "4시 44분... 444... ㅁㅊ", "floor": "1F" },
+        { "user": "old_resident", "text": "너네 동 10년 전에 옥상에서 애 한 명 추락함", "floor": "2F" },
+        { "user": "echo_apartment", "text": "미쳤다 그런 얘기 처음 들음", "floor": "3F" },
+        { "user": "feng_shui_master", "text": "당장 이사 가세요. 구슬은 혼 찾는 소리", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post8",
+      "title": "이 글 읽는 순간부터 당신도",
+      "content": "[계정 삭제됨] [원본 게시물을 찾을 수 없습니다]",
+      "image": "assets/feed/post8.png",
+      "likes": 89234,
+      "comments": [
+        { "user": "reader_01", "text": "읽었는데 뭐가 문제인지 모르겠음", "floor": "1F" },
+        { "user": "reader_02", "text": "야 나도 방금 읽었는데 뒤에서 소리 남", "floor": "2F" },
+        { "user": "system_alert", "text": "이 게시물은 신고되었습니다", "floor": "3F" },
+        { "user": "witness", "text": "댓글 달면 계정 삭제되는 저주글이었음", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post9",
+      "title": "비 오는 날만 나타나는 택시",
+      "content": "밤 11시 넘어서 비 오면 항상 같은 위치에 빈 택시 대기 중. 번호판이 4444. 친구가 호기심에 탔는데 다음날 기억을 못함. 휴대폰 사진첩에 이상한 건물 사진만 100장.",
+      "image": "assets/feed/post9.png",
+      "likes": 26449,
+      "comments": [
+        { "user": "taxi_driver_union", "text": "4444 번호판은 발급 안 됨. 가짜 택시", "floor": "1F" },
+        { "user": "rain_at_night", "text": "근데 미터기는 돌아가던데요...", "floor": "2F" },
+        { "user": "urban_legend_archive", "text": "그거 '돌아오지 못하는 택시'임. 친구 확인해봐", "floor": "3F" },
+        { "user": "rain_at_night", "text": "친구한테 전화했는데 넌 누구야? 함... ㅁㅊ", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post10",
+      "title": "[질문] 새벽 3시에 온라인 접속자 수",
+      "content": "게임/SNS 다 확인해봤는데 새벽 3시 정각에 접속자 급증함. 근데 친구 목록에서 접속 중인 애들한테 메시지 보내면 답 없음. 프로필 들어가면 위치가 다 똑같음. '세 번째 세계'",
+      "image": "assets/feed/post10.png",
+      "likes": 52108,
+      "comments": [
+        { "user": "gamer_ghost", "text": "아 ㅅㅂ 나도 봤는데 그냥 넘김", "floor": "1F" },
+        { "user": "programmer_k", "text": "서버 로그 확인했는데 실제 접속 아님. 뭔가 다른 곳에서", "floor": "2F" },
+        { "user": "online_at_3am", "text": "방금 확인했는데 제 프로필도 '세 번째 세계'로 뜸", "floor": "3F" },
+        { "user": "digital_exorcist", "text": "접속 끊으세요. 지금 당장. 그거 본인 아님", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post11",
+      "title": "학교 야간 경비 아르바이트 경험담",
+      "content": "3층 음악실에서 피아노 소리 들림. 화장실 3번 칸은 절대 확인 안 함. CCTV에만 보이는 학생 있음. 급식실 냉장고는 밤에 열지 말 것. 4층 과학실 해부모형이 매일 위치 바뀜. 오늘로 그만둡니다.",
+      "image": "assets/feed/post11.png",
+      "likes": 38927,
+      "comments": [
+        { "user": "former_security", "text": "나도 거기서 일했음. 화장실 3번 칸 얘기 ㄹㅇ", "floor": "1F" },
+        { "user": "school_night_watch", "text": "왜 3번 칸은 확인하면 안 되나요?", "floor": "2F" },
+        { "user": "former_security", "text": "[계정 삭제됨]", "floor": "3F" },
+        { "user": "teacher_ghost", "text": "저 학교 교사인데... 92년도에 사고 있었음", "floor": "4F" }
+      ]
+    },
+    {
+      "id": "post12",
+      "title": "[긴급공유] 지하철 노선도가 바뀌었어요",
+      "content": "오늘 지하철 타는데 노선도에 없는 역이 추가되어 있음. '0번 출구역' 회색으로 표시됨. 전동차 안내방송에서도 나오는데 열차는 안 멈춤. 창밖 보니까 플랫폼에 사람들 빼곡한데 전부 출구 찾는 것처럼 두리번거림.",
+      "image": "assets/feed/post12.png",
+      "likes": 71203,
+      "comments": [
+        { "user": "metro_official", "text": "공식 노선도에 해당 역은 없습니다", "floor": "1F" },
+        { "user": "parallel_metro", "text": "그럼 이 사진은 뭐죠? 제가 직접 찍었는데", "floor": "2F" },
+        { "user": "dimension_researcher", "text": "0번 출구역은 나가는 출구가 없는 역. 절대 내리지 마세요", "floor": "3F" },
+        { "user": "parallel_metro", "text": "방금 열차가 멈췄어요. 0번 출구역이래요", "floor": "4F" }
+      ]
+    }
+  ]

@@ -1,0 +1,591 @@
+/* 전체 화면 배경 설정 */
+body {
+  margin: 0;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+}
+
+.character-image {
+  position: absolute;
+  left: 2%;
+  bottom: 0;
+  height: 95%;
+  object-fit: contain;
+}
+
+
+/* ===============================
+💬 다이얼로그 시스템
+=============================== */
+.dialogue-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* 캐릭터 이미지 영역 (좌우 배치) */
+.dialogue-characters {
+  position: absolute;
+  top: -40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+/* 캐릭터 이미지 기본 스타일 */
+.character-img {
+  height: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+.character-img.left { margin-left: 5%; }
+.character-img.right { margin-right: 5%; }
+
+/* 말하는 캐릭터는 강조 */
+.character-img.active {
+  opacity: 1;
+}
+
+/* 대사 텍스트 박스 */
+.dialogue-textbox {
+  background-color: rgba(20, 20, 20, 0.9);
+  padding: 14px;
+  border-radius: 10px;
+  margin: 0 5% 5% 5%;
+  color: white;
+  position: relative;
+}
+
+/* 캐릭터 이름 */
+.speaker-name {
+  font-weight: bold;
+  color: #a770ef;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+/* 대사 텍스트 */
+.dialogue-text {
+  font-size: 16px;
+  line-height: 1.5em;
+  margin-bottom: 10px;
+}
+
+/* 다음 버튼 */
+#next-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 50px;
+  cursor: pointer;
+}
+#next-btn:hover {
+  color: white;
+}
+/*******다이아로그 끝***********/
+
+/* 스마트폰 스타일 */
+.phone {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 380px;
+  height: 700px;
+  background-color: #111;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.header {
+  padding: 15px;
+  text-align: center;
+  background: linear-gradient(90deg,#2e003e,#4b0082);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+/* 탭 콘텐츠 */
+.feed, .chat, .clues, .board, .report {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: none;
+}
+.feed.active, .chat.active, .clues.active , .board.active, .report.active {
+  display: block;
+}
+
+/* 게시물 */
+.post {
+  background: #1a1a1d;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  
+}
+
+.post-summary {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 4px;
+
+/* ✅ 줄임표(...) 효과 적용을 위한 필수 조건 */
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2; /* 2줄 제한 */
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.new-badge {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 6px;
+}
+
+/* 채팅 메시지 */
+.chat-msg {
+  margin: 10px 0;
+}
+.chat-sender {
+  font-weight: bold;
+  color: #a770ef;
+}
+.chat-text {
+  background: #2c2c34;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 80%;
+  margin-left: 6px;
+}
+
+.choice {
+  margin-top: 10px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+.choice:hover {
+  background: #333;
+}
+
+
+.chat-room {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1a1a1d;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.chat-room:hover {
+  background: #2a2a2e;
+}
+
+.chat-room-text {
+  flex-grow: 1;
+}
+
+.chat-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* 👈 동그랗게 */
+  object-fit: cover;
+  border: 2px solid #a770ef;
+}
+
+.chat-room p {
+  font-size: 13px;
+  color: #999;
+  margin: 4px 0 0;
+  line-height: 1.4em;
+  max-height: 2.8em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.new-badge {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: crimson;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* ===============================
+🧭 채팅방 뒤로가기 버튼
+=============================== */
+.chat-back-btn {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.chat-back-btn:hover {
+  background-color: #666;
+}
+
+
+/* 단서 디자인*/
+.clue-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+.clue-card {
+  background: #1a1a1d;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.clue-card:hover {
+  transform: scale(1.02);
+}
+.clue-card img.clue-img { /*카드 이미지*/
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.clue-detail {
+  position: absolute;
+  top: 50%;    /*위치*/
+  left: 50%; 
+  transform: translate(-50%, -50%); /* 정확한 중앙 위치 */
+  text-align: center; /* 텍스트 중앙 정렬 */
+  width: 80%;
+  background: #222;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  color: #eee;
+}
+.clue-detail-img {
+  width: 100%;  /* 카드 너비에 맞춤 */
+  max-height: 200px;  /* 최대 높이 제한 */
+  object-fit: cover;  /* 이미지 비율 유지하며 꽉 채우기 */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.hidden {
+  display: none;
+}
+
+
+/*피드 시작*/
+
+.post-img-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+/* ===============================
+  📌 피드 팝업 (새로운 디자인)
+=============================== */
+
+.post-img {
+  text-align: center;
+  width: 300px;  /* 👈 썸네일 가로 크기 */
+  height: 300px; /* 👈 썸네일 세로 크기 */
+  object-fit: cover;         /* 이미지 비율 유지 */
+  border-radius: 10px;       /* 모서리 둥글게 */
+  margin-bottom: 8px;
+}
+.popup-content img#popup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  white-space: pre-wrap;
+}
+/* 🔲 전체 팝업 배경 (딤드 처리 + 블러 효과) */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* 딤 효과 강화 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(5px); /* 배경 블러 처리 */
+}
+
+/* 📦 피드 팝업 안쪽 콘텐츠 박스 (좌우 분리 레이아웃) */
+.popup-content {
+  background: #1a1a1d; /* 다크 모드 배경 (기존 .post와 유사) */
+  color: #eee;
+  width: 90%;
+  max-width: 800px; /* 팝업창 가로 폭 */
+  height: 80vh; /* 팝업창 세로 높이 */
+  max-height: 600px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  position: relative;
+  display: flex; /* 👈 핵심: 좌우 분리 */
+  padding: 0; /* 내부 컨테이너가 패딩을 가짐 */
+  text-align: left; /* 내부 요소 왼쪽 정렬 */
+  overflow: hidden; /* 모서리 둥글게 처리 */
+}
+
+/* ✖️ 닫기 버튼 (영감 이미지 스타일) */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  background: #d90429; /* 강렬한 빨간색 */
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  font-weight: bold;
+  z-index: 10;
+  border: 2px solid white;
+  transition: transform 0.2s, background-color 0.2s;
+}
+.popup-close:hover {
+  background: #ef233c;
+  transform: scale(1.1);
+}
+
+/* 🖼️ 1. 팝업 왼쪽: 이미지 컨테이너 */
+.popup-image-container {
+  flex: 0 0 50%; /* 50% 너비 고정 */
+  width: 50%;
+  height: 100%;
+  background: #000;
+}
+/* (기존 img 태그 스타일 재정의) */
+.popup-content img#popup-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 비율 맞춰 꽉 차도록 */
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+
+/* 📄 2. 팝업 오른쪽: 상세 내용 컨테이너 */
+.popup-details-container {
+  flex: 1; /* 나머지 50% 공간 차지 */
+  padding: 25px;
+  overflow-y: auto; /* 👈 핵심: 내용 많으면 스크롤 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* (기존 h3, p 태그 스타일 재정의) */
+.popup-content h3#popup-title {
+  font-size: 24px;
+  color: #a770ef; /* 테마 색상 */
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.popup-content p#popup-content {
+  font-size: 16px;
+  line-height: 1.6;
+  flex-grow: 1; /* 댓글 전까지의 공간을 최대한 차지 */
+  margin-bottom: 15px;
+}
+
+
+/* ❤️ 좋아요 (새로 추가된 영역) */
+.popup-stats {
+  margin-top: auto; /* 댓글과 본문 영역을 밀어내고 하단에 붙임 */
+  padding-top: 10px;
+  border-top: 1px solid #333;
+  font-weight: bold;
+  color: #ddd;
+}
+#popup-likes {
+  font-size: 16px;
+}
+
+/* 💬 댓글 (기존 .comments 스타일 활용 및 재정의) */
+.comments {
+  margin-top: 15px;
+  text-align: left;
+  font-size: 0.9em;
+  padding-top: 10px;
+  border-top: 1px solid #333;
+}
+.comments h4 {
+  margin-bottom: 10px;
+  color: #ccc;
+  font-size: 16px;
+}
+#popup-comments-list {
+  max-height: 200px; /* 댓글 많아지면 스크롤 (선택 사항) */
+  overflow-y: auto;
+}
+.comment {
+  border-top: 1px solid #333;
+  padding: 8px 0;
+  color: #bbb;
+}
+.comment .floor {
+  font-weight: bold;
+  color: #a770ef; /* 테마 색상 */
+  margin-right: 8px;
+}
+
+/*피드 끝*/
+
+
+/*추리 보드*/
+.board { flex:1; padding:15px; display:none; }
+.board.active { display:block; }
+.ev-list { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+.evidence { background:#1f1f23; border:1px solid #444; border-radius:6px; padding:8px; cursor:pointer; width:110px; }
+.evidence:hover { background:#292932; }
+.slots { display:flex; justify-content:space-around; margin-top:10px; }
+.slot { width:90px; height:90px; border:2px dashed #555; border-radius:8px; text-align:center; line-height:90px; color:#777; font-size:14px; }
+.slot.filled { border-color:#a770ef; color:#fff; background:#2c2c34; }
+
+/* 탭 버튼 */
+.footer {
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid #222;
+  background-color: #0b0b0b;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.footer button {
+  background: none;
+  color: #bbb;
+  border: none;
+  font-size: 16px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.footer button.active {
+  color: #fff;
+}
+
+/* 인트로 */
+#intro-screen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999;
+  overflow: hidden;
+}
+
+#intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#intro-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#intro-text {
+  max-width: 80%;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+#skip-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid white;
+  color: white;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 페이드 인 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none;
+}

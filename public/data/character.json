@@ -1,0 +1,26 @@
+[
+  {
+    "id": "c1",
+    "name": "하연",
+    "role": "피해자",
+    "personality": "감정 억제형",
+    "emotion_bias": {"sad": 0.8, "fear": 0.7, "anger": 0.3, "neutral": 0.2},
+    "portrait": "ha-yeon.png"
+  },
+  {
+    "id": "c2",
+    "name": "루카",
+    "role": "용의자",
+    "personality": "냉소적·충동형",
+    "emotion_bias": {"anger": 0.6, "denial": 0.5, "neutral": 0.2},
+    "portrait": "ruka.png"
+  },
+  {
+    "id": "c3",
+    "name": "채리",
+    "role": "목격자",
+    "personality": "과몰입형",
+    "emotion_bias": {"fear": 0.6, "sympathy": 0.7, "surprise": 0.3},
+    "portrait": "cherry.png"
+  }
+]

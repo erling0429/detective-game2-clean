@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>루시아의 해결사 사무소</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🎬 인트로 영상 + 텍스트 -->
+  <div id="intro-screen">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="assets/intro.mp4" type="video/mp4">
+    </video>
+    <div id="intro-text-container">
+      <div id="intro-text"></div>
+      <!-- ✅ type="button" 추가 & onclick 대신 JS에서 이벤트 등록 -->
+      <button id="skip-button">Skip ⏩</button>
+    </div>
+  </div>
+
+  <!-- 💬 다이얼로그 박스 (대화 시스템 UI) -->
+  <div id="dialogue-box" class="dialogue-box hidden">
+    <div class="dialogue-characters">
+      <img id="char-left" class="character-img left hidden" src="" alt="왼쪽 캐릭터" />
+      <img id="char-right" class="character-img right hidden" src="" alt="오른쪽 캐릭터" />
+    </div>
+    <div class="dialogue-textbox">
+      <div id="speaker-name" class="speaker-name">캐릭터명</div>
+      <div id="dialogue-text" class="dialogue-text">대사가 표시됩니다...</div>
+      <button id="next-btn" onclick="nextDialogue()">▶</button>
+    </div>
+  </div>
+
+  <!-- 전체 배경 -->
+  <div class="background">
+    <img src="assets/background.png" class="background-image" />
+    <img src="assets/Lobby.png" class="character-image" />
+  </div>
+
+  <!-- 스마트폰 UI -->
+  <div id="main-ui" class="hidden"> 
+    <div class="phone">
+      <div class="header">컨텍트 코어</div>
+      <div class="feed active" id="feed"></div>
+      <div class="chat" id="chat"></div>
+      <div class="report" id="report">
+        <h3>AI 분석 결과</h3>
+        <p>로그에서 감정 파형 이상 감지<br/>마지막 감정: 공포 → 정적</p>
+        <p><em>삭제 명령은 AI가 발신</em></p>
+      </div>
+      <div class="clues" id="clues">
+        <h3>단서 목록</h3>
+        <div id="clue-list" class="clue-list"></div>
+        <div id="clue-detail" class="clue-detail hidden">
+          <img id="clue-image" class="clue-detail-img" src="" alt="단서 이미지" />
+          <h4 id="clue-title">단서 제목</h4>
+          <p id="clue-description">단서 설명</p>
+          <button onclick="closeClueDetail()">닫기</button>
+        </div>
+      </div>
+      <div class="board" id="board">
+        <h3>추리보드 : 단서 조합</h3>
+        <p>획득한 단서를 3개 선택해 결론을 도출하세요.</p>
+        <div id="evidence-list" class="ev-list"></div>
+        <div id="slots" class="slots">
+          <div class="slot" data-slot="1">슬롯 1</div>
+          <div class="slot" data-slot="2">슬롯 2</div>
+          <div class="slot" data-slot="3">슬롯 3</div>
+        </div>
+        <button id="deduceBtn" onclick="deduce()">결론 도출</button>
+      </div>
+      <div class="footer">
+        <button id="feedBtn" class="active" onclick="switchTab('feed')">피드</button>
+        <button id="chatBtn" onclick="switchTab('chat')">채팅</button>
+        <button id="cluesBtn" onclick="switchTab('clues')">단서</button>
+        <button id="boardBtn" onclick="switchTab('board')">추리보드</button>
+        <button id="reportBtn" onclick="switchTab('report')">리포트</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔚 엔딩 화면 -->
+  <div class="ending-screen hidden" id="ending-screen">
+    <h2 id="ending-title"></h2>
+    <p id="ending-desc"></p>
+    <button onclick="restartGame()">다시 시작</button>
+  </div>
+
+  <!-- ✅ JS 모듈로 로드 (Vite / Netlify용) -->
+  <script type="module" src
