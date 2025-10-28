@@ -5,7 +5,7 @@
 */
 let feedData = [];
 
-fetch('./data/feed.json')
+fetch('data/feed.json')
   .then(res => res.json())
   .then(data => {
     feedData = data;
@@ -25,7 +25,7 @@ let currentChatRoom = null; // 현재 열려 있는 채팅방 id
 const shownDialogues = new Set(); // ✅ F5 누르면 항상 비어있는 상태로 시작
   
 // ✅ 채팅 데이터 로딩 및 목록 출력
-fetch('./data/chat.json')
+fetch('data/chat.json')
 .then(res => res.json())
 .then(data => {
   chatData = data.map(room => ({ ...room, completed: false })); // 초기 상태 설정
@@ -875,7 +875,7 @@ function loadDialogueSet(key, callback, isOneTime = true) {
     return;
   }
 
-  fetch('./data/dialogues.json')
+  fetch('data/dialogues.json')
     .then(res => res.json())
     .then(data => {
       if (data[key]) {
