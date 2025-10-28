@@ -72,9 +72,9 @@ let isBgmPlaying = false; // 재생여부 확인
 //bgmAudio.volume = 0;
 
 const bgmTracks = {
-  lobby1: 'assets/sound/lobby1.mp3',
-  lobby2: 'assets/sound/lobby2.mp3',
-  lobby3: 'assets/sound/lobby3.mp3'
+  lobby1: '/assets/sound/lobby1.mp3',
+  lobby2: '/assets/sound/lobby2.mp3',
+  lobby3: '/assets/sound/lobby3.mp3'
 };
 
 
@@ -300,7 +300,7 @@ function playNewBGM(path) {
  * 효과음 재생 함수
  */
 function playClickSound() {
-  const audio = new Audio('assets/sound/click.mp3');
+  const audio = new Audio('/assets/sound/click.mp3');
   audio.volume = 0.3;
   audio.play();
 }
@@ -1030,8 +1030,10 @@ document.querySelector('.popup-close').addEventListener('click', closeFeedPopup)
 // 1. 단서 상세 닫기 버튼 (index.html에서 id="clue-detail-close-btn" 추가함)
 document.getElementById('clue-detail-close-btn').addEventListener('click', closeClueDetail);
 
+
 // 2. 추리보드 결론 도출 버튼
 document.getElementById('deduceBtn').addEventListener('click', deduce);
+
 
 // 3. 하단 탭 버튼들
 document.getElementById('feedBtn').addEventListener('click', () => switchTab('feed'));
@@ -1045,4 +1047,3 @@ document.getElementById('reportBtn').addEventListener('click', () => switchTab('
 
 // 4. 엔딩 화면 다시 시작 버튼 (index.html에서 id="restart-btn" 추가함)
 document.getElementById('restart-btn').addEventListener('click', restartGame);
-
