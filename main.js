@@ -911,3 +911,6 @@ document.getElementById('skip-button').addEventListener('click', skipIntro);
 
 // 👇 [추가] 다이얼로그 다음 버튼에 이벤트 리스너 추가
 document.getElementById('next-btn').addEventListener('click', nextDialogue);
+
+// 👇 [추가] 피드 팝업 닫기 버튼에 이벤트 리스너 추가
+document.querySelector('.popup-close').addEventListener('click', closeFeedPopup);
