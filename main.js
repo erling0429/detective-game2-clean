@@ -908,3 +908,6 @@ function loadDialogueSet(key, callback, isOneTime = true) {
 window.onload = showIntroText;
 // 👇 [추가] 스킵 버튼 ID를 찾아 클릭 이벤트를 skipIntro 함수와 연결
 document.getElementById('skip-button').addEventListener('click', skipIntro);
+
+// 👇 [추가] 다이얼로그 다음 버튼에 이벤트 리스너 추가
+document.getElementById('next-btn').addEventListener('click', nextDialogue);
