@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
   <!-- 🎬 인트로 영상 + 텍스트 -->
   <div id="intro-screen">
     <video id="intro-video" autoplay muted playsinline>
@@ -15,23 +16,28 @@
     </video>
     <div id="intro-text-container">
       <div id="intro-text"></div>
-      <!-- ✅ type="button" 추가 & onclick 대신 JS에서 이벤트 등록 -->
-      <button id="skip-button">Skip ⏩</button>
+      <button id="skip-button" onclick="skipIntro()">Skip ⏩</button>
     </div>
   </div>
+
 
   <!-- 💬 다이얼로그 박스 (대화 시스템 UI) -->
   <div id="dialogue-box" class="dialogue-box hidden">
     <div class="dialogue-characters">
+      <!-- 좌측 캐릭터 -->
       <img id="char-left" class="character-img left hidden" src="" alt="왼쪽 캐릭터" />
+      <!-- 우측 캐릭터 -->
       <img id="char-right" class="character-img right hidden" src="" alt="오른쪽 캐릭터" />
-    </div>
+    </div> 
+
+    <!-- 대사 텍스트 영역 -->
     <div class="dialogue-textbox">
       <div id="speaker-name" class="speaker-name">캐릭터명</div>
       <div id="dialogue-text" class="dialogue-text">대사가 표시됩니다...</div>
       <button id="next-btn" onclick="nextDialogue()">▶</button>
     </div>
   </div>
+
 
   <!-- 전체 배경 -->
   <div class="background">
@@ -41,45 +47,109 @@
 
   <!-- 스마트폰 UI -->
   <div id="main-ui" class="hidden"> 
-    <div class="phone">
-      <div class="header">컨텍트 코어</div>
-      <div class="feed active" id="feed"></div>
-      <div class="chat" id="chat"></div>
-      <div class="report" id="report">
-        <h3>AI 분석 결과</h3>
-        <p>로그에서 감정 파형 이상 감지<br/>마지막 감정: 공포 → 정적</p>
-        <p><em>삭제 명령은 AI가 발신</em></p>
+  <div class="phone">
+    <div class="header">컨텍트 코어</div>
+
+
+    <!--휴대폰 피드-->
+    <div class="feed active" id="feed">
+         
+    </div>
+    
+
+    <!--채팅-->
+    <div class="chat" id="chat">
+
+    </div>
+
+    <!--리포트-->
+    <div class="report" id="report">
+      <h3>AI 분석 결과</h3>
+      <p>로그에서 감정 파형 이상 감지<br/>마지막 감정: 공포 → 정적</p>
+      <p><em>삭제 명령은 AI가 발신</em></p>
+    </div>
+
+    <!--단서-->
+    <div class="clues" id="clues">
+      <h3>단서 목록</h3>
+      <div id="clue-list" class="clue-list">
+        <!-- 단서 카드들이 JS 로 동적 삽입 -->
       </div>
-      <div class="clues" id="clues">
-        <h3>단서 목록</h3>
-        <div id="clue-list" class="clue-list"></div>
-        <div id="clue-detail" class="clue-detail hidden">
-          <img id="clue-image" class="clue-detail-img" src="" alt="단서 이미지" />
-          <h4 id="clue-title">단서 제목</h4>
-          <p id="clue-description">단서 설명</p>
-          <button onclick="closeClueDetail()">닫기</button>
+
+      <div id="clue-detail" class="clue-detail hidden">
+        <img id="clue-image" class="clue-detail-img" src="" alt="단서 이미지" />
+        <h4 id="clue-title">단서 제목</h4>
+        <p id="clue-description">단서 설명</p>
+        <button onclick="closeClueDetail()">닫기</button>
+      </div>
+    </div>
+
+    <!--추리보드-->
+    <div class="board" id="board">
+      <h3>추리보드 : 단서 조합</h3>
+      <p>획득한 단서를 3개 선택해 결론을 도출하세요.</p>
+      <div id="evidence-list" class="ev-list"></div>
+      <div id="slots" class="slots">
+        <div class="slot" data-slot="1">슬롯 1</div>
+        <div class="slot" data-slot="2">슬롯 2</div>
+        <div class="slot" data-slot="3">슬롯 3</div>
+      </div>
+      <button id="deduceBtn" onclick="deduce()">결론 도출</button>
+    </div>
+
+
+    <!--탭 추가-->
+    <div class="footer">
+      <button id="feedBtn" class="active" onclick="switchTab('feed')">피드</button>
+      <button id="chatBtn" onclick="switchTab('chat')">채팅</button>
+      <button id="cluesBtn" onclick="switchTab('clues')">단서</button>
+      <button id="boardBtn" onclick="switchTab('board')">추리보드</button>
+      <button id="reportBtn" onclick="switchTab('report')">리포트</button>
+      
+    </div>
+  </div>
+
+  <!-- 📌 피드 상세 팝업 -->
+  <!-- <div id="feed-popup" class="popup hidden">
+    <div class="popup-content">
+      <span class="popup-close" onclick="closeFeedPopup()">✖</span>
+      <img id="popup-img" class="popup-img" src="" alt="피드 이미지" />
+      <h3 id="popup-title" class="popup-title">제목</h3>
+      <p id="popup-content" class="popup-text">내용</p>
+      <div id="popup-likes" class="popup-likes">❤️ <span id="like-count"></span></div>
+      <div id="popup-comments" class="popup-comments"></div>
+    </div>
+  </div> -->
+
+  <div id="feed-popup" class="popup hidden">
+    <div class="popup-content">
+      
+      <span class="popup-close" onclick="closeFeedPopup()">✖</span>
+  
+      <div class="popup-image-container">
+        <img id="popup-img" src="" alt="피드 이미지" />
+      </div>
+  
+      <div class="popup-details-container">
+        
+        <h3 id="popup-title">제목</h3>
+        
+        <p id="popup-content">내용</p>
+        
+        <div class="popup-stats">
+          <span id="popup-likes">❤️ 0</span>
         </div>
-      </div>
-      <div class="board" id="board">
-        <h3>추리보드 : 단서 조합</h3>
-        <p>획득한 단서를 3개 선택해 결론을 도출하세요.</p>
-        <div id="evidence-list" class="ev-list"></div>
-        <div id="slots" class="slots">
-          <div class="slot" data-slot="1">슬롯 1</div>
-          <div class="slot" data-slot="2">슬롯 2</div>
-          <div class="slot" data-slot="3">슬롯 3</div>
+        
+        <div class="comments">
+          <h4>댓글</h4>
+          <div id="popup-comments-list">
+            </div>
         </div>
-        <button id="deduceBtn" onclick="deduce()">결론 도출</button>
-      </div>
-      <div class="footer">
-        <button id="feedBtn" class="active" onclick="switchTab('feed')">피드</button>
-        <button id="chatBtn" onclick="switchTab('chat')">채팅</button>
-        <button id="cluesBtn" onclick="switchTab('clues')">단서</button>
-        <button id="boardBtn" onclick="switchTab('board')">추리보드</button>
-        <button id="reportBtn" onclick="switchTab('report')">리포트</button>
+  
       </div>
     </div>
   </div>
+
 
   <!-- 🔚 엔딩 화면 -->
   <div class="ending-screen hidden" id="ending-screen">
@@ -87,6 +157,8 @@
     <p id="ending-desc"></p>
     <button onclick="restartGame()">다시 시작</button>
   </div>
+</div>
 
-  <!-- ✅ JS 모듈로 로드 (Vite / Netlify용) -->
-  <script type="module" src
+  <script src="main.js"></script>
+</body>
+</html>
